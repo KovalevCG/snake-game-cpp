@@ -4,7 +4,7 @@
 #include <string>
 
 bool gameOver;
-const int width = 10;
+const int width = 20;
 const int height = 10;
 int x, y, fruitX, fruitY, score;
 int tailX[100], tailY[100];
@@ -47,10 +47,11 @@ void Draw() {
 	output += "\n";
 
 	for (int i = 1; i <= height; i++) {
-		for (int j = 1; j <= width; j++) { 
+		for (int j = 1; j <= width + 1; j++) { 
 			if (i == y && j == x) {
 				output += "0";
 			}
+			else if (j == width + 1) output += "|";
 			else if (i == fruitY && j == fruitX) {
 				output += "F";
 			}
@@ -142,7 +143,22 @@ void Logic() {
 		y++;
 		break;
 	}
-	if (x > width || x < 1 || y > height || y < 1) gameOver = true;
+	// if (x > width || x < 1 || y > height || y < 1) gameOver = true;
+
+	if (x > width)
+		x = 1;
+	else if (x < 1)
+		x = width;
+
+	if (y > height)
+		y = 1;
+	else if (y < 1)
+		y = height;
+
+	for (int i = 0; i < nTail; i++) {
+		if (tailX[i] == x && tailY[i] == y) gameOver = true;
+	}
+
 	if (x == fruitX && y == fruitY) {
 		nTail++;
 		score += 1;

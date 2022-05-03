@@ -1,6 +1,6 @@
 # Snake Game C++
 
->This game is made as a project to learn the basics of the C++ language. The main part is done with the help of a tutorial. In addition, I added my own functionality.
+>This game is made as a project to learn the basics of the C++ language. The main part is done with the help of a tutorials. In addition, I added my own functionality.
 >- fixed screen flickering while playing
 >- removed blinking cursor
 
